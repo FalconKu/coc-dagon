@@ -1,0 +1,14 @@
+{
+  "locale_schema_version": 1,
+  "locale": "zh-CN",
+  "target": {
+    "kind": "adventure",
+    "id": "dagon"
+  },
+  "fields": {
+    "tutorial": {
+      "name": "大衮：深潮之下",
+      "summary": "1918 年春，一名从太平洋上被救回的商船二副写下二十七天的手稿后跳了楼。他说海退开了，露出一片不该存在的泥滩。你手上现在有他写到一半的稿纸。"
+    }
+  }
+}

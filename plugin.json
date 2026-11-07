@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "content_schema_version": 2,
+  "locale_schema_version": 1,
+  "default_locale": "zh-CN",
+  "supported_locales": ["zh-CN"],
+  "id": "coc-dagon",
+  "name": "大衮：深潮之下",
+  "version": "1.0.0",
+  "description": "《克苏鲁的呼唤》7 版短冒险：改编自 H. P. 洛夫克拉夫特 1919 年公版短篇《大衮》。5 章 30 节点 4 结局，约 3 小时。1918 年旧金山调查 → 十九天航行 → 从海底露出的黑色泥滩。",
+  "plugin_type": "content-pack",
+  "content_profile": "adventure-module",
+  "content_delivery_mode": "catalog",
+  "license": "CC-BY-SA-4.0",
+  "config_schema": "config.schema.json",
+  "adventure_packages": ["adventures/dagon"],
+  "capabilities": ["content.world"],
+  "permissions": ["content.read"],
+  "contributes": {
+    "lorebooks": ["content/lorebooks/*.json"]
+  },
+  "docs": "README.md"
+}

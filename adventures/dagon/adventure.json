@@ -1,0 +1,442 @@
+{
+  "schema_version": 2,
+  "kind": "adventure",
+  "id": "dagon",
+  "format": "diceframe:adventure-graph-v2",
+  "source_ref": "public-domain:hpl-dagon-1919",
+  "automation_level": "guided",
+  "visibility": "public",
+  "name": "大衮：深潮之下",
+  "summary": "1918 年春，一名从太平洋上被救回的商船二副写下二十七天的手稿后跳了楼。他说海退开了，露出一片不该存在的泥滩。你手上现在有他写到一半的稿纸。",
+  "estimated_minutes": 180,
+  "player_count": 3,
+  "recommended_level": "standard",
+  "world_policy": "portable",
+  "recommended_world_id": "pacific_shoal",
+  "chapters": [
+    {"id": "investigation", "name": "第一章：教会街"},
+    {"id": "nine_names", "name": "第二章：九个人"},
+    {"id": "outbound", "name": "第三章：出航"},
+    {"id": "shoal", "name": "第四章：泥滩"},
+    {"id": "the_night", "name": "第五章：那一夜"}
+  ],
+  "start_node_ids": ["apartment"],
+  "nodes": [
+    {
+      "id": "apartment",
+      "type": "scene",
+      "chapter_id": "investigation",
+      "visibility": "public",
+      "name": "三楼的房间",
+      "description": "门虚掩着，锁舌没弹回去——有人比你们先到，而且不打算掩饰。\n\n屋里是标准的单身海员陈设：一张床、一张桌、一只木箱、一个洗脸架。但每样东西都被动过：抽屉全拉开，箱盖半掀，床垫掀起一角。翻的人很急，也很专业，只找纸。\n\n桌上摊着写到一半的稿纸，最后一句停在「它抬起手臂，那动作像是在……」。钢笔没盖帽，墨已干，笔尖有一层细黑颗粒。\n\n墙上钉着一张太平洋海图，用铅笔圈出一块，圆心在夏威夷西南。圈的旁边写着一个日期：3 月 21 日。圈的位置被指甲反复刮过，纸都起毛了。\n\n窗台上有六个烟头，全都只抽一半，掐断的方向一致朝窗内——他站在窗边抽，但每次都掐掉，像在练习不往下看。\n\n（可调查：稿纸、笔尖颗粒、海图、烟头、床底木箱。木箱里有一只帆布手套，掌心磨穿一个洞，洞口边缘嵌着黑砂。）",
+      "transitions": [{"to": "three_callers"}]
+    },
+    {
+      "id": "three_callers",
+      "type": "decision",
+      "chapter_id": "investigation",
+      "visibility": "public",
+      "name": "楼梯上的脚步声",
+      "description": "杂货店老板在楼下喊了一嗓子，说又有人上去了。\n\n楼道里有三个方向的声音：\n\n其一，四楼往下走的皮鞋声，稳、慢，皮鞋跟钉了铁片。老板说那是「说话带德国口音的先生」，昨天来过两次，今天是第三次。\n\n其二，二楼平台停住的脚步。一个提公文包的年轻人站在那儿，正在整理领带——你们在教会街口见过他，他当时在看表。\n\n其三，没有声音。前门旁边的伞桶里多了一把湿伞，但没有人进来。\n\n你们只有一次机会决定先追哪个方向。来不及追的那个，会带走一些东西。",
+      "choice_mode": "exclusive",
+      "transitions": [
+        {"to": "chase_hans", "choice_id": "chase_the_german", "choice_label": "追上四楼，追那个德国人"},
+        {"to": "follow_voss", "choice_id": "stop_the_briefcase", "choice_label": "拦住提公文包的年轻人"},
+        {"to": "stay_and_read", "choice_id": "let_them_go", "choice_label": "不管他们，先把稿纸读完"}
+      ]
+    },
+    {
+      "id": "chase_hans",
+      "type": "scene",
+      "chapter_id": "investigation",
+      "visibility": "public",
+      "name": "屋顶上的汉斯",
+      "description": "四楼通向屋顶的活板门开着，铁梯还在晃。你们爬上去时，那个人已经跨过两个屋脊，正沿着防火梯往下。\n\n他四十岁上下，穿灰色大衣，左腿有点跛，但下梯子的速度不像跛的人。他听见后面有声音，回头看了一眼——不是惊慌，是评估。\n\n追到海德街口能截住他（一次敏捷或追逐判定）。他随身带的东西：一本德英词典、一张旧金山湾区地图（上面用红笔标了三个码头）、以及一张从稿纸上撕下来的纸——第十八页，那页的英文写的是漂流第九天。\n\n他不会说英语，只会重复两个词：「Wasser」（水）和「unten」（下面）。搜身能发现一枚德国海军情报部门的铜牌，编号被磨掉。\n\n（他也在找这份记录。这意味着：想知道那片海域的事的，不止你们一方。）",
+      "transitions": [{"to": "stay_and_read"}]
+    },
+    {
+      "id": "follow_voss",
+      "type": "scene",
+      "chapter_id": "investigation",
+      "visibility": "public",
+      "name": "公文包与名片",
+      "description": "年轻人没有跑。他转身，微笑，递上名片：埃德加·沃斯，太平洋地理学会特约采集员。\n\n他的公文包里有：手稿第三份抄本（比你们手上这份多出两页）、一张学会内部调阅单（列着 1902 年以来十七份封存记录的编号）、以及一叠现金——两百四十美元，他说是「预付的收购价」。\n\n他非常坦率，坦率得让人不舒服：「我不是来抢的，我是来保存的。这种东西交给报纸，三天后就变成猎奇故事；交给学会，它会躺在柜子里一百年，一百年后还有人能查。」\n\n他愿意合作，条件只有一个：无论你们在海上看到什么，拓片、照片、记录，必须先给他一份。\n\n（他能提供的：船、潜水装备、学会的介绍信、以及一句话——「你是第四个来找我谈这份手稿的人，前三个都出海了，没有一个回来。」）",
+      "transitions": [{"to": "stay_and_read"}]
+    },
+    {
+      "id": "stay_and_read",
+      "type": "scene",
+      "chapter_id": "investigation",
+      "visibility": "public",
+      "name": "一百四十六页",
+      "description": "读完手稿需要三个小时，需要一次图书馆使用或侦查判定（失败则读到天亮，其间有人会来）。\n\n前一百三十页的结构：漂流（1–38）→ 泥滩升起（39–71）→ 石柱与刻文（72–104）→ 那一夜（105–130）。文风从冷静的记录逐渐变成短句、重复、括号里的自我纠正。\n\n三个关键信息：\n\n1. 泥滩的边界是「露出来」的，不是浮上来——界线之外是正常海面，线内一滴水都没有。\n2. 独石柱底部十二英尺高处有一圈磨亮的凹槽，像被什么东西长期环抱。\n3. 那声音的节奏是四秒一次。「它在数。」——手稿的原话。\n\n后十六页不是英文。字符工整，行距均匀，与前文笔迹明显不同。\n\n最大的空白：他从头到尾没有提到同筏的另外两个人。",
+      "transitions": [{"to": "hospital_records"}]
+    },
+    {
+      "id": "hospital_records",
+      "type": "scene",
+      "chapter_id": "nine_names",
+      "visibility": "public",
+      "name": "水手医院的档案柜",
+      "description": "霍尔医生把三个牛皮纸袋推到桌面上，然后坐下，双手交叉放在腹部，像在等一个他已经知道答案的问题。\n\n袋一：入院记录。体重一百零四磅，脱水，左臂伤口深可见骨，伤口内黑色细砂。\n袋二：化验单。结论栏「非火山成因，硅含量异常，建议送伯克利复检」，复检栏空白，签发日期是三周前。\n袋三：验尸报告。官方结论「坠楼致死」，但备注栏有一行小字：「死者左手掌心有陈旧性穿刺伤，伤口边缘角化，非坠落所致。」\n\n霍尔自己的判断：「那道伤，像是握过什么粗糙的、带棱的东西，握了很久。」\n\n他还说了一句不肯写进报告的话：布里格斯死前两晚，病房里一直有轻敲声，每四秒一次，推门就停。\n\n（可争取：让霍尔签字调阅原始化验样本；或说服他把伯克利语言学家的名字说出来。）",
+      "transitions": [{"to": "customs_records"}]
+    },
+    {
+      "id": "customs_records",
+      "type": "scene",
+      "chapter_id": "nine_names",
+      "visibility": "public",
+      "name": "九个人的名单",
+      "description": "海关海事登记科的档案员是个戴袖套的老头，他说查「洛厄尔号」要等，然后用了四十分钟才把卷宗抱出来。\n\n档案很完整，完整得可疑：\n\n1918 年 1 月 4 日，「洛厄尔号」自 Liverpool 出发，载煤，船员二十三人。\n2 月 17 日，在亚速尔以西被德国袭击舰「猎鹰号」拦截，船员被押上袭击舰，货轮被凿沉。\n3 月 12 日，「猎鹰号」在南太平洋释放九名俘虏，给了一条小艇，理由是「淡水不足」。\n\n九个人的名字都在。此后再无任何记录：没有到达任何港口，没有被任何船只救起，没有尸体。\n\n九个人，只回来一个。\n\n档案末尾附了一张手写的便条，签名字迹潦草：「本部查询此九人下落，迄无结果。本案暂结。」日期是十天前——比布里格斯跳楼还晚。\n\n（这意味着：有人在布里格斯死后，才来查这九个人。而查的人，不是海关。）",
+      "transitions": [{"to": "anchor_bell"}]
+    },
+    {
+      "id": "anchor_bell",
+      "type": "decision",
+      "chapter_id": "nine_names",
+      "visibility": "public",
+      "name": "锚链与钟",
+      "description": "内河码头 88 号，门楣上挂着一只摘掉钟舌的铜钟，风再大也不响。\n\n屋里烟气浓得看不清人脸。你们花五美分买了一轮酒，消息就开始往这边流：跑夏威夷线的船「回来的人少了」；有人见过「像煮开的沥青一样的海」；有人说是海底火山；立刻有人反驳——火山不会「一涨一落地呼吸」。\n\n后间有张桌子，桌面上用刀刻着四个日期和四个叉，最近一个是 3 月 21 日。桌边坐着一个右手缺三根手指的老头，正把啤酒杯推来推去，谁也不看。\n\n同时，柜台那边的水手在传另一件事：多洛雷斯教堂的凯恩神父这半年「收了好几个淹死的人」，而且每次都在名牌后面刻一样的东西。\n\n两条线都能走，但今晚只够走一条。",
+      "choice_mode": "exclusive",
+      "transitions": [
+        {"to": "jonas_talk", "choice_id": "buy_jonas_drinks", "choice_label": "请老乔纳斯喝三杯"},
+        {"to": "mission_card", "choice_id": "go_to_the_mission", "choice_label": "去多洛雷斯教堂找凯恩神父"},
+        {"to": "vault_gate", "choice_id": "skip_both", "choice_label": "两边都不去，直接找船"}
+      ]
+    },
+    {
+      "id": "jonas_talk",
+      "type": "scene",
+      "chapter_id": "nine_names",
+      "visibility": "public",
+      "name": "三杯之后",
+      "description": "第一杯他不说话。第二杯他问你们是不是「替那个跳楼的来问」。第三杯见底，他把右手放在桌上，让你们看那三根断指的位置。\n\n他是「圣佩德罗号」的水手长，是他把布里格斯从救生筏上抱下来的。两个细节与官方记录不符：\n\n第一，筏上其实有三个人。另外两个在救起时已经死了，其中一个手里攥着一块黑色的、像沥青又像石头的东西。船医把东西扔进了海里——乔纳斯记得他扔的时候手在抖。\n\n第二，布里格斯没有昏迷。他一直睁着眼，反复说一个词。乔纳斯学给你们听，音节是「达贡」，但他坚持重音在第二个音节，而且后面还跟着一串更长的、不像人话的音。\n\n乔纳斯愿意带你们去见「圣佩德罗号」现任大副，条件是你们答应一件事：出海的时候，别在满月前后测深。\n\n（他还会给一样东西：那块「黑石头」的一角碎片，他当时偷偷掰下来的。）",
+      "transitions": [{"to": "vault_gate"}]
+    },
+    {
+      "id": "mission_card",
+      "type": "scene",
+      "chapter_id": "nine_names",
+      "visibility": "public",
+      "name": "弥撒书里的坐标",
+      "description": "凯恩神父在侧廊等你们，手里捏着一张祈祷卡。他不肯说忏悔内容，但说了另一句：\n\n「他最后求的不是赦免。他让我记住一个地名，说等有人来问，就告诉他们别去。」\n\n祈祷卡背面用铅笔写着：「12-13-168」。他把它解释成「圣马可福音第十七章」，但弥撒书没有第十七章——那是他自己加的暗记。\n\n教堂地下有个小纪念龛，供着四十七块溺亡船员的名牌。最近半年新增三块，三块的名牌后面都刻着同一个记号：一个倒立的、像锚又像三叉戟的符号。\n\n凯恩说那不是他刻的。他还说，过去半年，他从三个不同的人口中听到过同样的音节。\n\n「我开始怀疑，我听的忏悔有没有边界。」\n\n（可带走：祈祷卡。可调查：三块名牌、教堂后墙那道从屋顶裂到地基的缝。）",
+      "transitions": [{"to": "vault_gate"}]
+    },
+    {
+      "id": "vault_gate",
+      "type": "decision",
+      "chapter_id": "nine_names",
+      "visibility": "public",
+      "name": "学会的铁门",
+      "description": "太平洋地理学会在萨特街，一栋改造过的宅邸，门厅挂着历任会长的画像，最后一幅空着，画框还在等。\n\n特殊收藏室在二楼，铁门，锁是老式的弹子锁，门缝里透出樟脑丸和旧纸的味道。里面是三十七个上锁的档案柜，编号从 1902 到 1918。\n\n沃斯的调阅单列着十七份，全在这一间。\n\n三条路：\n\n一，让沃斯带你们进去。他会答应，但他会站在你们身后，看你们看了什么。\n二，夜里来。锁不难开，但学会晚上有一个守夜人，而且柜子上有编号——少一份，第二天全城都知道。\n三，不进去。你们已经有手稿、有坐标、有九个人。也许够了。\n\n（进去的人会看到：每份档案首页都贴着同一笔迹的便签——「水深不稳，勿复测。」）",
+      "choice_mode": "exclusive",
+      "transitions": [
+        {"to": "vault_in", "choice_id": "ask_voss_in", "choice_label": "让沃斯带你们进去"},
+        {"to": "vault_in", "choice_id": "break_in_at_night", "choice_label": "夜里撬锁进去"},
+        {"to": "skip_vault", "choice_id": "we_have_enough", "choice_label": "不进去了，直接出海"}
+      ]
+    },
+    {
+      "id": "vault_in",
+      "type": "scene",
+      "chapter_id": "nine_names",
+      "visibility": "public",
+      "name": "三十七号柜",
+      "description": "十七份档案，全部同一个格式：一页记录，一页便签。\n\n最早的一份是 1902 年，一份传教士的民族志笔记，附了一张手绘的海图，画着一根立在浅滩上的黑色石柱。最晚的一份是 1917 年，一份海军测量船的日志，只有一句话：「复测结果与前次不符，建议归为仪器故障。」\n\n每份首页的便签笔迹相同：「水深不稳，勿复测。」\n\n最关键的发现不在便签上，而在最后一份档案的封底：一张 1917 年的剪报，标题《海军部否认太平洋存在异常水深》。剪报背面有人用钢笔写了一行字，字迹与其他便签不同：\n\n「他们不是在否认。他们是在等它自己走。」\n\n沃斯站在你们身后，一直没有说话。你们回头时，他正在看窗外。\n\n（可带走：手绘海图（比麦克雷那张详细）、剪报。不能带走：任何一份档案——柜子有编号。）",
+      "transitions": [{"to": "charter"}]
+    },
+    {
+      "id": "skip_vault",
+      "type": "scene",
+      "chapter_id": "nine_names",
+      "visibility": "public",
+      "name": "没有答案的那一夜",
+      "description": "你们没有进学会。\n\n回旅馆的路上，雾又起来了，路灯只剩一圈毛边。你们把现在手上的东西摊在桌上：一份不完整的手稿、一个坐标、九个人的名单、一个倒立的三叉戟记号。\n\n拼得出来的部分：那片海域有规律，规律跟月相有关，跟潮汐表无关。有至少十七份记录被同一批人封了起来。有人在布里格斯死后才去查那九个人。\n\n拼不出来的部分：为什么是九个人只回来一个，以及他为什么被放回来。\n\n窗外有人走过，脚步停了半秒，又走了。\n\n（这一夜的代价：你们比走另一条路的人少一张海图。好处是：没有人知道你们在查什么，出海时也不会有人跟着。）",
+      "transitions": [{"to": "charter"}]
+    },
+    {
+      "id": "charter",
+      "type": "decision",
+      "chapter_id": "outbound",
+      "visibility": "public",
+      "name": "三条船",
+      "description": "麦克雷的事务所在杰斐逊街 210 号二楼，煤油混着鱼腥。他听完你们要去的位置，先笑了，然后不笑了。\n\n「每天四十二美元，燃油另算，风险押金两百。保险不认那片海。」\n\n三条船：\n\n「安妮·B号」，四十二英尺蒸汽渔船，八节，能装六人加十天补给。最快，最贵，最显眼。\n「海燕号」，三十英尺帆船，慢，吃水浅，能靠近泥滩。便宜，但补给空间小。\n「老姑娘号」，五十五英尺，前身是走私船，舱底有暗格。航速中等，能藏东西，也能藏人。\n\n如果你们拿出海图局的原始测深记录，押金可以免，而且他会主动说一件事：过去十四个月，四条船在同一片海域报过「水深骤变」，其中一条是「圣佩德罗号」。\n\n他还会从抽屉里拿出手绘海图，四个红叉围成不到六十海里的范围。","choice_mode": "exclusive",
+      "transitions": [
+        {"to": "voyage", "choice_id": "take_annie_b", "choice_label": "租安妮·B号（快、贵、显眼）"},
+        {"to": "voyage", "choice_id": "take_petrel", "choice_label": "租海燕号（慢、浅、便宜）"},
+        {"to": "voyage", "choice_id": "take_old_girl", "choice_label": "租老姑娘号（有暗格）"}
+      ]
+    },
+    {
+      "id": "voyage",
+      "type": "scene",
+      "chapter_id": "outbound",
+      "visibility": "public",
+      "name": "十九天",
+      "description": "出金门大桥那天是阴天，海面是铅灰色，一群海狮跟着船叫了半英里才散。\n\n前十天无事。第十一天起，三件小事开始累积：\n\n一，夜里越来越静。老水手说这叫「海屏住了呼吸」，出现这种静，通常是风暴前，但气压计不动。\n二，罗盘偏了两度，之后每天多偏一点，方向不固定。\n三，无风的时候能闻到腥味，像退潮后的滩涂，持续十几分钟就散。\n\n第十八天，有人在船尾看见水里有东西跟着，速度与船一致，持续了四个小时。用灯照过去，水面下什么都没有。\n\n第十九天清晨，瞭望手喊了一声：测深线不对。\n\n（这一段的用法：不要加速。让十九天真的慢下来，让玩家自己开始怀疑。船上可发生的事：船员争执、有人偷看你们的资料、夜里有人站在船舷边不动。）",
+      "transitions": [{"to": "first_sounding"}]
+    },
+    {
+      "id": "first_sounding",
+      "type": "scene",
+      "chapter_id": "outbound",
+      "visibility": "public",
+      "name": "四十英尺",
+      "description": "测深需要两个人、十四磅的铅锤和一百二十英寻的线。\n\n第一次放线，三千一百英尺。正常。\n第二次，二十三分钟后，同一位置，四十英尺。铅锤触底时手上传来的感觉不对——不是撞到沙，是压进某种有弹性、会轻微下陷的东西。拉上来时，铅锤底部的凹槽里嵌着一层黑色的、湿的东西。\n\n第三次，二十分钟后再测，又是三千一百英尺。\n\n船长的反应很干脆：「改航向东南，全速。」\n\n如果你们坚持留下，他会要求加钱，并且要求你们签一张字据，写明「因雇主要求，船长已建议撤离」。\n\n天黑后，海面开始出现另一种东西：一条清晰的、缓慢移动的湿界线，从西南方向推过来。界线之内，海面在下降。\n\n（铅锤上的黑色物质可以化验：成分与布里格斯伤口里的黑砂一致。）",
+      "transitions": [
+        {"to": "crew_tension"},
+        {"to": "shoal_rises"}
+      ]
+    },
+    {
+      "id": "crew_tension",
+      "type": "scene",
+      "chapter_id": "outbound",
+      "visibility": "public",
+      "name": "船员会议",
+      "description": "船员在厨房开会，没有叫你们，但门没关严。\n\n他们的结论分两派：一派要立刻返航，理由是「测深线在撒谎，海不撒谎」；另一派要多拿钱，理由是「雇主要去，我们就去，反正死的不是我们」。\n\n关键人物是轮机长，一个叫帕特里克的爱尔兰人，他信教，也信海。他私下找你们，说了实话：他年轻时在另一条船上见过「海退开」，那次全船十一个人，回来四个，回来的四个后来都没活过五十岁。\n\n「我不怕死。」他说，「我怕回来以后，晚上听见声音。」\n\n他能帮你们做两件事：让船在泥滩边缘多停六个小时；或者在你们被困时，违抗船长命令等你们。\n\n（要让船员留下，需要一次说服判定，或支付额外报酬，或让帕特里克站到你们这边。）",
+      "transitions": [{"to": "shoal_rises"}]
+    },
+    {
+      "id": "shoal_rises",
+      "type": "scene",
+      "chapter_id": "shoal",
+      "visibility": "public",
+      "name": "海退开了",
+      "description": "那不是浮上来，是露出来。\n\n先是一条线，然后是一片，然后延展到视线尽头——黑色的、湿润的、微微反光的泥滩。海面被推到一边，界线清晰得像刀切：线外是正常的涌浪，线内一滴水都没有。\n\n空气里的腥味浓到呛人。呼吸久了会恶心，眼睛刺痛。\n\n泥滩表面不是平的。踩下去会下陷约两英寸，抬脚时泥会黏住鞋底，发出潮湿的撕拉声。泥里嵌着东西：贝壳——都是死的、完整的、全部朝同一方向；鱼骨——深海与浅海种类混在一起；还有一些不成形的、像被压扁的软组织。\n\n远处，泥滩中央偏北，立着一根黑色的柱子。\n\n船长在你们身后说：「六个小时。潮水回来之前，你们必须回到船上。」\n\n（时间压力从这一刻开始计时。泥滩上不能跑，只能走——跑会陷得更深。）",
+      "transitions": [{"to": "monolith_survey"}]
+    },
+    {
+      "id": "monolith_survey",
+      "type": "decision",
+      "chapter_id": "shoal",
+      "visibility": "public",
+      "name": "三十英尺",
+      "description": "走到石柱需要四十分钟。它比远处看时更大，高约三十英尺，材质不像花岗岩——敲击时声音沉闷，几乎不回响，像敲在一整块实心的东西上。\n\n表面完全被刻文覆盖，分两类：\n\n上层是细密的、像鱼鳞又像波浪的符号，尺寸均匀，排列规整，有明确的重复结构。它不是装饰，是一份名录。\n下层是大型浮雕：水中之物向天空举起手臂。比例不对——那些东西比人大得多，而且手臂数量不是两条。\n\n底部十二英尺高处，有一圈磨得很亮的凹槽。那个高度，正好是一个巨物站立时手臂所能及的位置。\n\n你们只有一次机会做一件事，然后潮水就会开始回来。",
+      "choice_mode": "exclusive",
+      "transitions": [
+        {"to": "take_rubbing", "choice_id": "make_the_rubbing", "choice_label": "拓下刻文（两小时）"},
+        {"to": "read_carvings", "choice_id": "read_the_names", "choice_label": "试着读懂那份名录"},
+        {"to": "descend_rift", "choice_id": "go_down_the_rift", "choice_label": "下到裂谷里去看"}
+      ]
+    },
+    {
+      "id": "take_rubbing",
+      "type": "scene",
+      "chapter_id": "shoal",
+      "visibility": "public",
+      "name": "两小时",
+      "description": "拓印需要纸、石墨和耐心。纸铺上去，石墨横着擦，符号一个一个浮出来。\n\n上层的名录可以完整拓下。下层的浮雕面积太大，只能拓局部——你们选了「举臂」那一块。\n\n两小时里，泥滩上的变化是渐进的：先是气泡，成串的、细小的，从裂谷方向扩散过来；然后是腥味变浓；最后是泥面开始出现细微的、像脉搏一样的起伏。\n\n负责放哨的人会看到：泥滩边缘的湿界线，向内退了大约十码。\n\n拓完时，纸是湿的，墨是黑的，你们的手上全是石墨和泥。\n\n（拓片是唯一能带回文明的物理证据。代价：你们没有时间读刻文，也没有时间下裂谷。）",
+      "transitions": [{"to": "night_falls"}]
+    },
+    {
+      "id": "read_carvings",
+      "type": "scene",
+      "chapter_id": "shoal",
+      "visibility": "public",
+      "name": "名录",
+      "description": "读刻文需要一次语言或神秘学判定，失败则只能看出「这是名字」。\n\n成功的人会看出结构：名录分栏，每栏一组符号，组与组之间有分隔符。最下方的一栏，有一个符号被划掉了。\n\n那个符号的形状，与凯恩神父纪念龛名牌后的记号、铅锤侧面刻的记号，是同一个。\n\n更麻烦的是：这一栏有九个符号。九个。八个完整，一个被划掉。\n\n如果此时有人想起海关档案里那九个人的名字，就会明白——这不是名录，这是账。划掉的那个，是被放回去的那个。\n\n（读懂的人需要一次理智检定。不是因为它可怕，是因为它太整齐了。）",
+      "transitions": [{"to": "night_falls"}]
+    },
+    {
+      "id": "descend_rift",
+      "type": "scene",
+      "chapter_id": "shoal",
+      "visibility": "public",
+      "name": "裂谷",
+      "description": "裂谷在石柱东侧，宽约八十英尺，深不见底。\n\n下攀需要绳索和两次成功的攀爬判定。内壁湿滑，有垂直的、平行的刮痕，间距很大，像是某种巨物反复进出时留下的。\n\n越往下，水声越清楚：缓慢的、有节奏的涌动，间隔约四秒一次。四秒，四秒，四秒。\n\n下降约六十英尺后，内壁的泥变成另一种东西：不是泥，是干燥的、细密的、像灰一样的沉积物，里面混着骨片。骨片很大，其中一块的形状，像人的肩胛骨，但厚三倍。\n\n再往下，绳索不够长了。\n\n（下方有什么，不给答案。可以给一个细节：从下方照上来的光，是极淡的、偏绿的白，而且会随着那个四秒的节奏明暗一次。）",
+      "transitions": [{"to": "night_falls"}]
+    },
+    {
+      "id": "night_falls",
+      "type": "decision",
+      "chapter_id": "the_night",
+      "visibility": "public",
+      "name": "天黑了",
+      "description": "潮水没有按时回来。\n\n船长在船上打灯，信号是三短一长：回船。泥滩边缘的湿界线又向内退了十码，露出的泥面上，多了很多新的、巨大的凹陷，形状接近三趾。\n\n裂谷方向的声音变大了。四秒一次，稳定，不急，像在数。\n\n三个选择：\n\n一，留在泥滩上，找个能看清的位置，等它出来。\n二，立刻回船，从甲板上看。\n三，把船上的小艇放下来，躲在艇里，靠近裂谷。\n\n每个选择决定了你们看到多少、以及它看到你们多少。",
+      "choice_mode": "exclusive",
+      "transitions": [
+        {"to": "stay_on_shoal", "choice_id": "stay_on_the_mud", "choice_label": "留在泥滩上，看清它"},
+        {"to": "back_to_ship", "choice_id": "back_to_the_deck", "choice_label": "回船上，从甲板看"},
+        {"to": "hide_in_boat", "choice_id": "hide_in_the_dinghy", "choice_label": "放下小艇，靠近裂谷躲着"}
+      ]
+    },
+    {
+      "id": "stay_on_shoal",
+      "type": "scene",
+      "chapter_id": "the_night",
+      "visibility": "public",
+      "name": "站在泥上",
+      "description": "你们留在泥滩上，离裂谷大约一百码，找了一处稍高的泥脊，趴下。\n\n等待的时间很长。泥面在起伏，像呼吸。腥味浓到舌根发苦。\n\n然后水声停了。\n\n停了整整十七秒——这十七秒里，泥滩上所有的声音都消失了，包括风。第十八秒，裂谷里升起一条手臂。\n\n那不是手臂。那是某种结构，粗壮、苍白、表面覆盖着鳞片和不断渗出的黏液，末端有能环抱石柱的长度。它搭在裂谷边缘，泥没有下陷。\n\n然后是头。\n\n（此处理智检定，损失按 CoC 7e：成功 1/1d6，失败 1d6/1d10。若玩家坚持「不闭眼、要看清」，额外一次检定，成功可获得一条关键观察：它在数。）",
+      "transitions": [{"to": "dagon_rises"}]
+    },
+    {
+      "id": "back_to_ship",
+      "type": "scene",
+      "chapter_id": "the_night",
+      "visibility": "public",
+      "name": "甲板上",
+      "description": "你们回到船上。船长没有责备，只让所有人进舱，只留你们在甲板。\n\n从甲板看，泥滩是一片黑色的平面，裂谷是一道更黑的缝。距离大约四百码，足够看清轮廓，不够看清细节。\n\n船员都躲在舱里，只有帕特里克站在你们旁边，手里握着一串念珠，嘴唇在动。\n\n然后裂谷里有东西升起来。\n\n先是一条手臂，然后是一个庞大的、缓慢的、不属于任何已知分类的形体。它环抱石柱，停在那个高度正好的凹槽里，然后开始发出声音。\n\n那声音不是从喉咙里出来的，是从整个身体里出来的，低、慢、有节奏。四秒一次。\n\n帕特里克念珠掉在甲板上，滚了两圈，停住。他说了一句话，声音很轻：「它在数我们。」\n\n（理智检定，损失略低于近距离：成功 0/1d6，失败 1d6/1d8。距离给了你们一层保护，也给了你们一层想象。）",
+      "transitions": [{"to": "dagon_rises"}]
+    },
+    {
+      "id": "hide_in_boat",
+      "type": "scene",
+      "chapter_id": "the_night",
+      "visibility": "public",
+      "name": "小艇里",
+      "description": "小艇放下去，划到离裂谷大约四十码的位置，你们把桨收进艇内，趴下。\n\n这个距离，能听见泥滩下面的东西。不是水声，是摩擦声——很多东西同时在泥里移动，不快，但很多。\n\n有一次，一只手搭上了艇舷。\n\n那只手是湿的、暗灰色的，指节方向与人类相反。它停了三秒，然后缩回去。小艇没有晃动，说明它没有重量压在艇上，或者它压得很轻。\n\n然后是裂谷。\n\n形体升起时，你们在它下方约三十英尺的位置，仰视。这个角度看不到全貌，只能看到它环抱石柱时，手臂上鳞片的排列——那些鳞片的大小不均，大的有手掌大，小的像指甲，排列成某种规律。\n\n（此处理智检定最重：成功 1/1d8，失败 1d10/1d100。近距离仰视是整场冒险最危险的位置。但也是唯一能听到「它在数什么」的位置——数字不是时间，是数量。）",
+      "transitions": [{"to": "dagon_rises"}]
+    },
+    {
+      "id": "dagon_rises",
+      "type": "scene",
+      "chapter_id": "the_night",
+      "visibility": "public",
+      "name": "它不需要理会你",
+      "description": "它环抱石柱，头部中央只有一个器官，替代了眼与口的全部功能。那个器官没有瞳孔，也没有方向——它不朝任何人看。\n\n它发出声音，四秒一次。整个过程持续了大约二十分钟。\n\n最令人恐惧的部分不是它的样子，是它的**规律**：每一次的间隔都一样，每一次手臂环抱的高度都一样，每一次停留的时间都一样。它在做一件它做过很多次、并且会继续做很多次的事。\n\n你们不在它的世界里。它不需要理会你们。\n\n二十分钟后，它松开石柱，沉回裂谷。水声恢复。然后潮水回来了——不是慢慢涨，是从四面同时涌来，速度极快。\n\n（逃生判定：从所在位置回到船上，或抓住任何漂浮物。失败者会被水冲倒，需要一次游泳判定。船员会抛绳，但只有在帕特里克站到你们这边时才会违抗船长命令等你们。）",
+      "transitions": [{"to": "the_return"}]
+    },
+    {
+      "id": "the_return",
+      "type": "decision",
+      "chapter_id": "the_night",
+      "visibility": "public",
+      "name": "回程十九天",
+      "description": "回程是十九天。船上没有人说话。\n\n你们手上有：一份不完整的手稿、一个坐标、九个人的名单、一张铅锤上拓下来的刻文（如果拓了）、或者一个只有你们自己知道的数字（如果听懂了）。\n\n第五天，你们开始出现同样的症状：夜里听见四秒一次的轻敲声，推门就停。第九天，有人开始在纸上画那个倒立的三叉戟。第十四天，帕特里克说他梦见自己在泥里走，走得很慢，泥一直不放开他的脚。\n\n第十九天，金门大桥出现在雾里。\n\n然后你们要决定：这些东西，交给谁。",
+      "choice_mode": "exclusive",
+      "transitions": [
+        {"to": "ending_manuscript", "choice_id": "write_it_all_down", "choice_label": "全部写下来，像布里格斯那样"},
+        {"to": "ending_sealed", "choice_id": "give_it_to_voss", "choice_label": "交给沃斯，封进柜子"},
+        {"to": "ending_publish", "choice_id": "give_it_to_the_press", "choice_label": "交给报纸，让所有人知道"},
+        {"to": "ending_return", "choice_id": "go_back_again", "choice_label": "补给一次，再回去"}
+      ]
+    },
+    {
+      "id": "ending_manuscript",
+      "type": "ending",
+      "chapter_id": "the_night",
+      "visibility": "public",
+      "name": "结局：第一百四十七页",
+      "description": "你们租了一间公寓，开始写。\n\n写得很慢，因为有些东西没有词。写到第九天，你们发现自己在做一件和布里格斯一样的事：把每一句都校对一遍，把括号里的自我纠正留下。\n\n写完的那天夜里，你们把鞋摆在窗台上，鞋尖朝海。\n\n第二天早上，报纸上有一条三行的消息，说某公寓有人坠楼，身份不明，遗物中有大量手写文稿，字迹工整，内容「疑为精神失常者之呓语」。\n\n手稿被送进警察局的证物室，编号 4471。三个月后，证物室清点，编号 4471 的盒子是空的。\n\n（这个结局不是失败。这是原作《大衮》的结局：叙述者写完，然后跳了下去。玩家主动选择它，应该得到与选择同等重量的描述，而不是惩罚。）",
+      "transitions": []
+    },
+    {
+      "id": "ending_sealed",
+      "type": "ending",
+      "chapter_id": "the_night",
+      "visibility": "public",
+      "name": "结局：第三十八号柜",
+      "description": "沃斯在学会门口等你们，像他一直在等。他看了拓片三分钟，然后说：「很好。这会是第三十八号。」\n\n他付了钱，签了收据，收据上写着「太平洋区域民俗资料，一份」。\n\n拓片被封进一个牛皮纸袋，袋口用火漆封上，火漆上压了学会的章。然后它进了柜子，柜子上锁，钥匙进了一个抽屉，抽屉里有三十七把一样的钥匙。\n\n你们签了保密协议，一式两份。\n\n之后的每一年，满月前后那三天，你们会睡不着。有人的解决办法是喝酒，有人的办法是搬家，有人的办法是每年去一次海边，站在岸上，看海。\n\n海很正常。海一直很正常。\n\n（这个结局保住了理智，也保住了秘密。代价是：没有人会知道那九个人去了哪里。）",
+      "transitions": []
+    },
+    {
+      "id": "ending_publish",
+      "type": "ending",
+      "chapter_id": "the_night",
+      "visibility": "public",
+      "name": "结局：头版第七栏",
+      "description": "《旧金山考察家报》的编辑听完，把雪茄按在烟灰缸里，说：「有意思。」\n\n第二天，头版第七栏，标题是《海员称太平洋存在「会呼吸的海底」》，配图是一张手绘的、画得很糟的石柱。\n\n三天后，海军部发了一份声明，措辞温和，说「有关报告已交由气象局复核」。\n\n一周后，两个穿灰西装的人来到报社，出示了某种证件，把所有原始材料带走了，包括你们那张拓片。报社拿到了一张收据，收据上写着「暂借」。\n\n你们的名字没有被登出来，但学会知道了，沃斯知道了，那个戴软呢帽的德国人（如果他还活着）也知道了。\n\n三个月后，你们中有人收到一封信，没有落款，只有一行字：「你们让他们知道了。现在他们在找第九个。」\n\n（这个结局拿到了公众关注，也把秘密暴露给了不该知道的人。后续可以接任何一条线。）",
+      "transitions": []
+    },
+    {
+      "id": "ending_return",
+      "type": "ending",
+      "chapter_id": "the_night",
+      "visibility": "public",
+      "name": "结局：下一班船",
+      "description": "你们没有把东西交给任何人。\n\n你们把拓片卷起来，塞进防水筒，把坐标重新抄了一遍，然后去码头找麦克雷，问他能不能再租一次船——这次要租两个月，要带潜水装备，要带照相机。\n\n麦克雷看了你们很久，然后说：「我上次说过，海不签合同。」\n\n他收了钱。\n\n第二次出海是在三个月后，满月前五天。这一次你们准备得更充分：绳索、煤气灯、干板、足够二十天的淡水。\n\n船驶出金门大桥那天是晴天，海面是蓝的。帕特里克没有来，他留在了岸上，说「我数过了，我不想去数第二次」。\n\n（这个结局把冒险变成一个循环。守秘人可以在这里结束，也可以用同一套地点和 monster 再跑一次——第二次会发现，石柱上的名录多了一栏。）",
+      "transitions": []
+    }
+  ],
+  "objectives": [
+    {
+      "id": "why_did_he_jump",
+      "name": "查明布里格斯为什么跳楼",
+      "visibility": "public",
+      "node_ids": ["apartment", "stay_and_read", "hospital_records", "customs_records"]
+    },
+    {
+      "id": "what_is_out_there",
+      "name": "弄清那片海域到底有什么",
+      "visibility": "public",
+      "node_ids": ["vault_in", "first_sounding", "shoal_rises"]
+    },
+    {
+      "id": "bring_back_proof",
+      "name": "带回能被人相信的证据",
+      "visibility": "public",
+      "node_ids": ["take_rubbing", "read_carvings"]
+    },
+    {
+      "id": "come_back_alive",
+      "name": "活着回到陆地",
+      "visibility": "public",
+      "node_ids": ["dagon_rises", "the_return"]
+    }
+  ],
+  "milestones": [
+    {
+      "id": "read_the_manuscript",
+      "name": "读完一百四十六页手稿",
+      "visibility": "public",
+      "node_ids": ["stay_and_read"]
+    },
+    {
+      "id": "found_the_nine",
+      "name": "发现被放走的九个人只回来一个",
+      "visibility": "public",
+      "node_ids": ["customs_records"]
+    },
+    {
+      "id": "saw_the_shoal",
+      "name": "亲眼看见海退开",
+      "visibility": "public",
+      "node_ids": ["shoal_rises"]
+    },
+    {
+      "id": "saw_it_rise",
+      "name": "亲眼看见它从裂谷升起",
+      "visibility": "public",
+      "node_ids": ["dagon_rises"]
+    },
+    {
+      "id": "made_the_choice",
+      "name": "决定把真相交给谁",
+      "visibility": "public",
+      "node_ids": ["the_return"]
+    }
+  ],
+  "world_seed": {
+    "entities": [
+      {"entity_id": "location:briggs_rooms", "kind": "location"},
+      {"entity_id": "location:black_shoal", "kind": "location"},
+      {"entity_id": "location:monolith", "kind": "location"},
+      {"entity_id": "location:rift", "kind": "location"},
+      {"entity_id": "npc:briggs", "kind": "npc"},
+      {"entity_id": "npc:hall", "kind": "npc"},
+      {"entity_id": "npc:jonas", "kind": "npc"},
+      {"entity_id": "npc:voss", "kind": "npc"},
+      {"entity_id": "item:manuscript", "kind": "item"},
+      {"entity_id": "creature:dagon", "kind": "creature"}
+    ],
+    "relations": [
+      {"relation_id": "rooms-to-shoal", "kind": "connects", "from_ref": "location:briggs_rooms", "to_ref": "location:black_shoal"},
+      {"relation_id": "monolith-on-shoal", "kind": "located_at", "from_ref": "location:monolith", "to_ref": "location:black_shoal"},
+      {"relation_id": "monolith-to-rift", "kind": "connects", "from_ref": "location:monolith", "to_ref": "location:rift"},
+      {"relation_id": "briggs-wrote-manuscript", "kind": "owns", "from_ref": "npc:briggs", "to_ref": "item:manuscript"},
+      {"relation_id": "dagon-in-rift", "kind": "located_at", "from_ref": "creature:dagon", "to_ref": "location:rift"}
+    ],
+    "facts": [
+      {"key": "public:briggs.died", "value": "布里格斯在医院写完手稿后坠楼，官方结论为自杀。", "visibility": "public"},
+      {"key": "public:shoal.exists", "value": "夏威夷西南海域存在周期性露出的黑色泥滩，测深数据会在四十与三千英尺之间跳变。", "visibility": "public"},
+      {"key": "public:sign.mark", "value": "倒立的、像锚又像三叉戟的记号，出现在铅锤、教堂名牌与测深记录页边角。", "visibility": "public"},
+      {"key": "gm:nine.released", "value": "1918 年 3 月 12 日「猎鹰号」放走九名俘虏，只回来布里格斯一个。他不是随机幸存者，是被挑出来的。", "visibility": "gm"},
+      {"key": "gm:monolith.roster", "value": "独石柱上层刻文是一份名录，九个符号，八个完整，一个被划掉。划掉的是被放回去的那个。", "visibility": "gm"},
+      {"key": "gm:dagon.counts", "value": "大衮每四秒发出一次声音，是在计数，数的不是时间而是数量：泥滩上活着的人。", "visibility": "gm"},
+      {"key": "gm:voss.agenda", "value": "沃斯为学会封存记录，学会背后有一批人认为「不要复测」才是安全，他们知道得比说出来的多。", "visibility": "gm"},
+      {"key": "gm:san.loss", "value": "近距离目击大衮：成功 1/1d6，失败 1d6/1d10；甲板距离：成功 0/1d6，失败 1d6/1d8；小艇仰视：成功 1/1d8，失败 1d10/1d100。", "visibility": "gm"}
+    ],
+    "processes": []
+  }
+}
