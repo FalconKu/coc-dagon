@@ -6,7 +6,7 @@
 
 - **人数**：3 人（2–5 人可调）
 - **时长**：约 3 小时
-- **结构**：5 章 / 30 节点 / 4 结局
+- **结构**：5 章 / 32 节点 / 4 结局
 - **推荐世界**：`pacific_shoal`（配套资源包 [深潮档案：太平洋异滩](../coc-dagon-shoal)）
 
 ## 结构
@@ -68,7 +68,7 @@ coc-dagon/
 ├── README.md
 ├── content/lorebooks/dagon-gm-guide.json
 └── adventures/dagon/
-    ├── adventure.json      (30 节点)
+    ├── adventure.json      (32 节点)
     ├── manifest.json
     └── locales/zh-CN/adventure.json
 ```
